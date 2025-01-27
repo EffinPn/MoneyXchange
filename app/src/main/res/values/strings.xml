@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">AE2 - Android avanzado</string>
     <string name="convertir_moneda">Convertir moneda</string>
+    <string-array name="spinner_items">
+        <item>EUR</item>
+        <item>USD</item>
+        <item>CNY</item>
+        <item>GBP</item>
+    </string-array>
 </resources>
