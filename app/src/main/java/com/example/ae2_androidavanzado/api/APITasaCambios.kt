@@ -13,6 +13,7 @@ interface APITasaCambios {
 
         @GET("convert")
         suspend fun convertir(
+            @Query("access_key") key: String,
             @Query("from") from: String,
             @Query("to") to: String,
             @Query("amount") amount: Double): Response<RespuestaCambio>
