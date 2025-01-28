@@ -3,6 +3,7 @@ package com.example.ae2_androidavanzado.interfaz
 
 import android.app.Activity
 import android.widget.*
+import androidx.recyclerview.widget.*
 import com.example.ae2_androidavanzado.R
 import com.example.ae2_androidavanzado.api.Peticiones
 import com.example.ae2_androidavanzado.model.TuplaHistorial
@@ -16,6 +17,7 @@ class UI(private val activity: Activity) {
     val spinnerDestino: Spinner = activity.findViewById(R.id.spinnerDestino)
     val inputUser: EditText = activity.findViewById(R.id.inputCantidad)
     val historial: MutableList<TuplaHistorial> = mutableListOf()
+    val recycler: RecyclerView = activity.findViewById(R.id.recycler)
 
 
 
@@ -51,6 +53,11 @@ class UI(private val activity: Activity) {
 
         }
 
+    fun configurarRecycler(){
+        recycler.adapter = HistorialAdapter(historial)
+        recycler.layoutManager = LinearLayoutManager(activity)
+
+    }
 
     }
     fun mostrarCambio(valor: Double){
@@ -61,6 +68,7 @@ class UI(private val activity: Activity) {
         val cantidad = input.toDouble()
         val tupla: TuplaHistorial = TuplaHistorial(origen, destino, cantidad, valor)
         historial.add(tupla)
-        resultadoConvertir.text = valor.toString() + destino
+        resultadoConvertir.text = "${valor} $destino"
+        recycler.adapter?.notifyItemInserted(historial.size - 1)
     }
 }

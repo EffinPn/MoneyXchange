@@ -20,9 +20,9 @@ class HistorialAdapter(private val historial: List<TuplaHistorial>) :
 
     // Inflamos el diseño de cada fila
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistorialViewHolder {
-        val view = LayoutInflater.from(parent.context)
+        val vista = LayoutInflater.from(parent.context)
             .inflate(R.layout.tuplas_historial, parent, false)
-        return HistorialViewHolder(view)
+        return HistorialViewHolder(vista)
     }
 
     // Rellenamos los datos de cada fila
