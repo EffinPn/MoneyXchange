@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Moneda Origen y Destino -->
+    <TextView
+        android:id="@+id/monedaOrigenDestino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="USD -> EUR"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <!-- Cantidad Origen -->
+    <TextView
+        android:id="@+id/cantidadOrigen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cantidad Origen: 10.0"
+        android:textSize="14sp" />
+
+    <!-- Cantidad Destino -->
+    <TextView
+        android:id="@+id/cantidadDestino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cantidad Destino: 8.0"
+        android:textSize="14sp" />
+
+</LinearLayout>
