@@ -6,9 +6,10 @@
     import androidx.recyclerview.widget.LinearLayoutManager
     import androidx.recyclerview.widget.RecyclerView
     import com.example.ae2_androidavanzado.R
+    import com.example.ae2_androidavanzado.model.ListaHistorial.historial
     import com.example.ae2_androidavanzado.model.TuplaHistorial
 
-    class UIHistorial(private val activity: AppCompatActivity, private val historial: MutableList<TuplaHistorial>) {
+    class UIHistorial(private val activity: AppCompatActivity) {
 
         val botonBH: Button = activity.findViewById(R.id.botonHistoriahst)
         val botonBC: Button = activity.findViewById(R.id.convertirBannercnv)

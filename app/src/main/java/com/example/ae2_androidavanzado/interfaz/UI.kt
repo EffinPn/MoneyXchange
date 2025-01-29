@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.*
 import com.example.ae2_androidavanzado.R
 import com.example.ae2_androidavanzado.api.Peticiones
+import com.example.ae2_androidavanzado.model.ListaHistorial
+import com.example.ae2_androidavanzado.model.ListaHistorial.historial
 import com.example.ae2_androidavanzado.model.TuplaHistorial
 
 
@@ -21,7 +23,6 @@ class UI(private val activity: AppCompatActivity) {
     val spinnerOrigen: Spinner = activity.findViewById(R.id.spinnerOrigen)
     val spinnerDestino: Spinner = activity.findViewById(R.id.spinnerDestino)
     val inputUser: EditText = activity.findViewById(R.id.inputCantidad)
-    val historial: MutableList<TuplaHistorial> = mutableListOf()
 
 
 
@@ -75,7 +76,7 @@ class UI(private val activity: AppCompatActivity) {
         }
         botonBannerHistorial.setOnClickListener{
             activity.setContentView(R.layout.historial)
-            UIHistorial(activity, historial)
+            UIHistorial(activity)
         }
 
     }
