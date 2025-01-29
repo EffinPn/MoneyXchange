@@ -4,35 +4,40 @@ package com.example.ae2_androidavanzado.interfaz
 import android.app.Activity
 import android.content.Intent
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.*
 import com.example.ae2_androidavanzado.R
 import com.example.ae2_androidavanzado.api.Peticiones
 import com.example.ae2_androidavanzado.model.TuplaHistorial
 
 
-class UI(private val activity: Activity) {
+class UI(private val activity: AppCompatActivity) {
 
     val botonConvertir: Button = activity.findViewById(R.id.botonConvertir)
     val botonBannerHistorial: Button = activity.findViewById(R.id.botonHistoria)
     val botonBannerConversor: Button = activity.findViewById(R.id.convertirBanner)
-    val botonBH: Button = activity.findViewById(R.id.botonHistoriahst)
-    val botonBC: Button = activity.findViewById(R.id.convertirBannercnv)
     val botonReset: Button = activity.findViewById(R.id.botonReset)
     val resultadoConvertir: TextView = activity.findViewById(R.id.resultado)
     val spinnerOrigen: Spinner = activity.findViewById(R.id.spinnerOrigen)
     val spinnerDestino: Spinner = activity.findViewById(R.id.spinnerDestino)
     val inputUser: EditText = activity.findViewById(R.id.inputCantidad)
     val historial: MutableList<TuplaHistorial> = mutableListOf()
-    val recycler: RecyclerView = activity.findViewById(R.id.recycler)
+
 
 
 
 
     init {
-        cargarSpinner()
-        configurarRecycler()
-        botonListo()
+        layoutPrincipal()
     }
+
+    fun layoutPrincipal(){
+
+        cargarSpinner()
+        botonesPrincipal()
+
+    }
+
     fun cargarSpinner(){
 
         val adapter = ArrayAdapter.createFromResource(
@@ -45,7 +50,7 @@ class UI(private val activity: Activity) {
         spinnerDestino.adapter = adapter
     }
 
-    fun botonListo(){
+    fun botonesPrincipal(){
 
         botonConvertir.setOnClickListener{
             val origen = spinnerOrigen.selectedItem.toString()
@@ -54,9 +59,9 @@ class UI(private val activity: Activity) {
             if(input.isBlank()){
                 Toast.makeText(activity,"Introduce una cantidad válida", Toast.LENGTH_SHORT).show()
             }
-            
+
             val cantidad = input.toDouble()
-            val peticion = Peticiones(activity)
+            val peticion = Peticiones(activity, this)
             peticion.conversor(origen, destino, cantidad)
         }
         botonReset.setOnClickListener{
@@ -66,22 +71,12 @@ class UI(private val activity: Activity) {
             spinnerOrigen.setSelection(0)
         }
         botonBannerConversor.setOnClickListener{
-            activity.setContentView(R.layout.activity_main)
+            Toast.makeText(activity, "Ya estás aquí", Toast.LENGTH_SHORT).show()
         }
         botonBannerHistorial.setOnClickListener{
             activity.setContentView(R.layout.historial)
+            UIHistorial(activity, historial)
         }
-        botonBC.setOnClickListener{
-            activity.setContentView(R.layout.activity_main)
-        }
-        botonBH.setOnClickListener{
-            activity.setContentView(R.layout.historial)
-        }
-    }
-
-    fun configurarRecycler(){
-        recycler.adapter = HistorialAdapter(historial)
-        recycler.layoutManager = LinearLayoutManager(activity)
 
     }
 
@@ -94,6 +89,6 @@ class UI(private val activity: Activity) {
         val tupla: TuplaHistorial = TuplaHistorial(origen, destino, cantidad, valor)
         historial.add(tupla)
         resultadoConvertir.text = "${valor} $destino"
-        recycler.adapter?.notifyItemInserted(historial.size - 1)
+
     }
 }

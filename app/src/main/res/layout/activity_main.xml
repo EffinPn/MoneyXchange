@@ -179,19 +179,19 @@
 
     <TextView
         android:id="@+id/resultado"
-        android:layout_width="256dp"
-        android:layout_height="75dp"
-        android:layout_marginBottom="36dp"
+        android:layout_width="338dp"
+        android:layout_height="89dp"
+        android:layout_marginBottom="52dp"
         android:text="..."
         android:textAlignment="center"
-
         android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputCantidad"
-        app:layout_constraintVertical_bias="0.925" />
+
+        app:layout_constraintTop_toBottomOf="@+id/botonConvertir"
+        app:layout_constraintVertical_bias="1.0" />
 
     <View
         android:id="@+id/view"
