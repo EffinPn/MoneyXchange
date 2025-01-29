@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        //Decidí pasarlo todo a otra clase para dejar el main lo más limpio posible.
         UI(this)
 
     }

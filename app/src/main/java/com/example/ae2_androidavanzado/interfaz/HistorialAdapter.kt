@@ -12,21 +12,23 @@ import com.example.ae2_androidavanzado.model.TuplaHistorial
 class HistorialAdapter(private val historial: List<TuplaHistorial>) :
     RecyclerView.Adapter<HistorialAdapter.HistorialViewHolder>() {
 
-    // ViewHolder que maneja las vistas de cada fila
+    /* Enlazamos las variables con los elementos del XML, en este caso tuplas_historial,
+    donde cada variable es un textview con datos.
+     */
     class HistorialViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val monedaOrigenDestino: TextView = itemView.findViewById(R.id.monedaOrigenDestino)
         val cantidadOrigen: TextView = itemView.findViewById(R.id.cantidadOrigen)
         val cantidadDestino: TextView = itemView.findViewById(R.id.cantidadDestino)
     }
 
-    // Inflamos el diseño de cada fila
+    // Inflamos el diseño de cada fila, con esto enlazamos el XML que da el formato con el recycler.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistorialViewHolder {
         val vista = LayoutInflater.from(parent.context)
             .inflate(R.layout.tuplas_historial, parent, false)
         return HistorialViewHolder(vista)
     }
 
-    // Rellenamos los datos de cada fila
+    // Rellenamos los datos de cada fila con un elemento de historial.
     override fun onBindViewHolder(holder: HistorialViewHolder, position: Int) {
         val item = historial[position]
         holder.monedaOrigenDestino.text = "${item.monedaOrigen} -> ${item.monedaDestino}"

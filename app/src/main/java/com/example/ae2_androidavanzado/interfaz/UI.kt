@@ -16,6 +16,7 @@ import com.example.ae2_androidavanzado.model.TuplaHistorial
 
 class UI(private val activity: AppCompatActivity) {
 
+    //Enlazamos las variables con los elementos del XML
     val botonConvertir: Button = activity.findViewById(R.id.botonConvertir)
     val botonBannerHistorial: Button = activity.findViewById(R.id.botonHistoria)
     val botonBannerConversor: Button = activity.findViewById(R.id.convertirBanner)
@@ -25,22 +26,14 @@ class UI(private val activity: AppCompatActivity) {
     val spinnerDestino: Spinner = activity.findViewById(R.id.spinnerDestino)
     val inputUser: EditText = activity.findViewById(R.id.inputCantidad)
 
-
-
-
-
+    //init para ejecutar estos métodos en cuanto se abra la app
     init {
-        layoutPrincipal()
-    }
-
-    fun layoutPrincipal(){
-
         cargarSpinner()
         botonesPrincipal()
-
     }
 
-    fun cargarSpinner(){
+    //Método para cargar el array con las monedas en los spinners, como son intercambiables, ambos reciben el mismo adapter.
+    fun cargarSpinner() {
 
         val adapter = ArrayAdapter.createFromResource(
             activity,
@@ -52,37 +45,41 @@ class UI(private val activity: AppCompatActivity) {
         spinnerDestino.adapter = adapter
     }
 
-    fun botonesPrincipal(){
+    //Método para establecer los listeners de los botones
+    fun botonesPrincipal() {
 
-        botonConvertir.setOnClickListener{
+        botonConvertir.setOnClickListener {
             val origen = spinnerOrigen.selectedItem.toString()
             val destino = spinnerDestino.selectedItem.toString()
             val input = inputUser.text.toString()
-            if(input.isBlank()){
-                Toast.makeText(activity,"Introduce una cantidad válida", Toast.LENGTH_SHORT).show()
+            if (input.isBlank()) {
+                Toast.makeText(activity, "Introduce una cantidad válida", Toast.LENGTH_SHORT).show()
             }
 
             val cantidad = input.toDouble()
+            //Llamada a Peticiones, pasándole esta activity y clase como parámetros
             val peticion = Peticiones(activity, this)
             peticion.conversor(origen, destino, cantidad)
         }
-        botonReset.setOnClickListener{
+        botonReset.setOnClickListener {
             resultadoConvertir.text = ""
             inputUser.text.clear()
             spinnerOrigen.setSelection(0)
             spinnerDestino.setSelection(0)
         }
-        botonBannerConversor.setOnClickListener{
+        botonBannerConversor.setOnClickListener {
             Toast.makeText(activity, "Ya estás aquí", Toast.LENGTH_SHORT).show()
         }
-        botonBannerHistorial.setOnClickListener{
+        botonBannerHistorial.setOnClickListener {
             activity.setContentView(R.layout.historial)
             UIHistorial(activity)
         }
 
     }
 
-    fun mostrarCambio(valor: Double){
+    /*Método que es llamado por el conversor de peticiones, toma los datos, crea una tupla de
+    Tuplahistorial y los añade al Singleton historial de ListaHistorial, por último muestra el resultado de la conversión*/
+    fun mostrarCambio(valor: Double) {
 
         val origen = spinnerOrigen.selectedItem.toString()
         val destino = spinnerDestino.selectedItem.toString()
