@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ae2_androidavanzado.R
+import com.example.ae2_androidavanzado.model.Simbolos
 import com.example.ae2_androidavanzado.model.TuplaHistorial
 
 class HistorialAdapter(private val historial: List<TuplaHistorial>) :
@@ -29,8 +30,8 @@ class HistorialAdapter(private val historial: List<TuplaHistorial>) :
     override fun onBindViewHolder(holder: HistorialViewHolder, position: Int) {
         val item = historial[position]
         holder.monedaOrigenDestino.text = "${item.monedaOrigen} -> ${item.monedaDestino}"
-        holder.cantidadOrigen.text = "Cantidad Origen: ${item.cantidadOrigen}"
-        holder.cantidadDestino.text = "Cantidad Destino: ${item.cantidadDestino}"
+        holder.cantidadOrigen.text = "Cantidad inicial: ${item.cantidadOrigen} ${Simbolos.mapaSimbolos[item.monedaOrigen]}"
+        holder.cantidadDestino.text = "Convertido a: ${item.cantidadDestino} ${Simbolos.mapaSimbolos[item.monedaDestino]}"
     }
 
     // Cantidad total de elementos

@@ -10,6 +10,7 @@ import com.example.ae2_androidavanzado.R
 import com.example.ae2_androidavanzado.api.Peticiones
 import com.example.ae2_androidavanzado.model.ListaHistorial
 import com.example.ae2_androidavanzado.model.ListaHistorial.historial
+import com.example.ae2_androidavanzado.model.Simbolos
 import com.example.ae2_androidavanzado.model.TuplaHistorial
 
 
@@ -69,7 +70,7 @@ class UI(private val activity: AppCompatActivity) {
             resultadoConvertir.text = ""
             inputUser.text.clear()
             spinnerOrigen.setSelection(0)
-            spinnerOrigen.setSelection(0)
+            spinnerDestino.setSelection(0)
         }
         botonBannerConversor.setOnClickListener{
             Toast.makeText(activity, "Ya estás aquí", Toast.LENGTH_SHORT).show()
@@ -89,7 +90,7 @@ class UI(private val activity: AppCompatActivity) {
         val cantidad = input.toDouble()
         val tupla: TuplaHistorial = TuplaHistorial(origen, destino, cantidad, valor)
         historial.add(tupla)
-        resultadoConvertir.text = "${valor} $destino"
+        resultadoConvertir.text = "${valor} ${Simbolos.mapaSimbolos[destino]}"
 
     }
 }

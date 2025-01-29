@@ -18,7 +18,7 @@
         android:id="@+id/cantidadOrigen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cantidad Origen: 10.0"
+        android:text="Cantidad inicial: 10.0 €"
         android:textSize="14sp" />
 
     <!-- Cantidad Destino -->
@@ -26,7 +26,7 @@
         android:id="@+id/cantidadDestino"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cantidad Destino: 8.0"
+        android:text="Convertido a: 8.0 €"
         android:textSize="14sp" />
 
 </LinearLayout>
